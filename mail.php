@@ -1,18 +1,19 @@
 <?php
-	if (isset($_POST['submit'])) {
-		$name = $_POST['name'];
-		$mailFrom = $_POST['email'];
-		$subject = $_POST['subject'];
-		$message = $_POST['message'];
 
+    $to = "mr.mw.96@gmail.com.com"; 
+    $from = $_REQUEST['email']; 
+    $name = $_REQUEST['name'];
+    $headers = "From: $from"; 
+    $subject = "You have a message sent from your site"; 
 
-		$mailTo = "mr.mw.96@gmail.com"
+    $fields = array(); 
+    $fields{"name"} = "name"; 
+    $fields{"email"} = "email"; 
+    $fields{"subject"} = "subject"; 
+    $fields{"message"} = "message";
 
-		$headers = "From: ".$mailFrom;
-		$txt = "You have recieved an e-mail from ".$name.".\n\n".$message;
+    $body = "Here is what was sent:\n\n"; foreach($fields as $a => $b){   $body .= sprintf("%20s: %s\n",$b,$_REQUEST[$a]); }
 
+    $send = mail($to, $subject, $body, $headers);
 
-		mail($mailTo, $subject, $txt, $headers);
-		header("Location: index.php?mailsend");
-	}
 ?>
