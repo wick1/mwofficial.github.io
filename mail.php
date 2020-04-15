@@ -17,7 +17,7 @@
     // $send = mail($to, $subject, $body, $headers);
 
 
-if(isset($_POST)) {
+if($_POST) {
   $to = "mr.mw.96@gmail.com.com"; // your mail here
   $name = filter_var($_POST["name"], FILTER_SANITIZE_EMAIL);
   $email = filter_var($_POST["email"], FILTER_SANITIZE_EMAIL);
